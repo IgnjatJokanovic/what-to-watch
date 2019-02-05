@@ -1,9 +1,38 @@
 <?php
+session_start();
 
-//use models\User;
-phpinfo();
- //$user = new User();
- //$con = DB::getInstance()->getConnection();
- //$result = $con->query("select * from kandidat")->fetchAll();
- //var_dump($result);
- //$user->ispisi();
+include('views/header.php');
+include('views/nav.php');
+
+if(isset($_GET['page']))
+{
+    switch($_GET['page'])
+    {
+        case 'actors':
+            require_once('views/actors.php');
+            break;
+        case 'about':
+            require_once('views/about.php');
+            break;
+        case 'author':
+            require_once('views/author.php');
+            break;
+        case 'contact':
+            require_once('views/contact.php');
+            break;
+        case 'login':
+            require_once('views/login.php');
+            break;
+        default:
+            require_once('views/home.php');
+            break;
+
+    }
+
+}
+else
+{
+    include('views/home.php');
+}
+
+include('views/footer.php');
