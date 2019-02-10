@@ -13,7 +13,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="images/home/product1.jpg" alt="" />
+											<img src="img/DP.jpg" alt="" />
 											<h2>FILM NASLOV</h2>
 											<p>Easy Polo Black Edition</p>
 												<div class="rating-system2">

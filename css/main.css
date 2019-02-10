@@ -964,7 +964,6 @@ h2.title {
   transition: height 500ms ease 0s;
   width: 100%;
   display: block;
-  opacity:;
 }
 
 .single-products:hover .product-overlay {
@@ -2570,6 +2569,8 @@ h2.title {
 .mt-100{
   margin-top: 100px;
 }
+
+
 
 .social-networks ul li {
   float: left;
