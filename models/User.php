@@ -1,5 +1,5 @@
 <?php namespace models;
-   use mdoels\DB;
+   use models\DB;
    session_start();
     class User
     {
