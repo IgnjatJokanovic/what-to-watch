@@ -37,9 +37,9 @@
 							</div>
 						</div>
 					<div class="col-sm-2">
-							<div class="search_box pull-right">
-								<input type="text" placeholder="Search"/>
-								<ul role="menu" class="sub-menu">
+							<div class="search_box pull-right dropdown">
+								<input  class="srch" type="search" placeholder="Search"/>
+								<ul class="sub-menu dropdown-content">
 									<li><a href="shop.html">Item1</a></li>
 									<li><a href="product-details.html">Item2</a></li> 
 									<li><a href="checkout.html">Item3</a></li> 
@@ -48,18 +48,29 @@
 								</ul>
 							</div>
 					</div>
-					<div class="col-sm-1">
+					<div class="col-sm-2">
 							<div class="shop-menu pull-right">
-								<ul class="nav navbar-nav">
-									<?php 
-										if(isset($_SESSION['user'])):
-									?>
-									<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-									<?php
-										else:
-									?>
-									<li><a href="index.php?page=login"><i class="fa fa-lock"></i> Login</a></li>
-									<?php endif; ?>
+								<ul class="nav navbar-nav acc">
+									
+									<li><a href="#"><i class="fa fa-user"></i> Account</a>
+										<ul class="sub-menu acc-content">
+											<?php if(!isset($_SESSION['user'])) : ?>
+
+											<li><a href="index.php?page=login">Login</a></li>
+											<li><a href="index.php?page=register">Register</a></li>
+
+											<?php else: ?>
+
+												<?php if(isset($_SESSION['user']) && $_SESSION['user']->role == 'admin'): ?>
+
+												<li><a href="admin/index.php">Admin pannel</a></li>
+												
+												<?php endif; ?>
+											<li><a href="index.php?page=edit">Edit account</a></li>
+											<li><a href="php/logout.php">Logout</a></li>
+											<?php endif; ?>
+										</ul>
+									</li>
 								</ul>
 							</div>
 					</div>

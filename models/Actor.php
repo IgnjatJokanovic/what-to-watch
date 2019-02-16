@@ -1,5 +1,6 @@
-<?php namespace models;
-    include_once('../models/DB.php');
+<?php 
+    namespace models;
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/imdb/models/DB.php');
   
     use models\DB;
     class Actor

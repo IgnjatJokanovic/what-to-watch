@@ -23,6 +23,12 @@ if(isset($_GET['page']))
         case 'login':
             require_once('views/login.php');
             break;
+        case 'register':
+            require_once('views/register.php');
+            break;
+        case 'edit':
+            require_once('views/edit.php');
+            break;
         default:
             require_once('views/home.php');
             break;
