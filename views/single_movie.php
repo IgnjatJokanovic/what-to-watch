@@ -91,7 +91,7 @@
 								<p>Release date: <?= date("d M Y", $movie->release) ?></p>
 								<p>Actors: </p>
 								<?php foreach($movie->actors as $a): ?>
-									<a href="index.php"><?= $a->name.' '.$a->surname ?></a></br>
+									<a href="index.php?page=actor&id=<?= $a->id ?>"><?= $a->name.' '.$a->surname ?></a></br>
 								<?php endforeach; ?>
 								<p>Categories: </p>
 								<?php foreach($movie->categories as $c): ?>
@@ -134,7 +134,7 @@
 							<div class="tab-pane fade active in" id="reviews" >
 								<div class="col-sm-12">
 								<?php foreach($coments as $c): ?>
-									<p><b>Posted by:</b> <?= $c->name.' '.$c->surname.', on '.date("d M Y", $c->created_at) ?></p>
+									<p><b>Posted by:</b>&nbsp;<img src="<?= $c->src ?>" alt="<?= $c->alt ?>" width="50"/>&nbsp;<?= $c->name.' '.$c->surname.', on '.date("d M Y", $c->created_at) ?></p>
 									<p><?= $c->comment ?></p>
 								<?php endforeach; ?>
 									<p><b>Write Your Comment</b></p>

@@ -70,7 +70,7 @@
         public function findById($id)
         {
             $con = DB::getInstance()->getConnection();
-            $this->actors = $con->query("select a.name, a.surname from actor a join movie_actor ma on a.id=ma.id_actor where ma.id_movie = $id")->fetchAll();
+            $this->actors = $con->query("select a.id, a.name, a.surname from actor a join movie_actor ma on a.id=ma.id_actor where ma.id_movie = $id")->fetchAll();
             $this->categories = $con->query("select c.name from category c join movie_category mc on c.id=mc.id_category where id_movie = $id")->fetchAll();
             $movie =  $con->query("select m.id as id, m.title as title, m.country as country, m.release_date as date, m.storyline as story, i.src as src, i.alt as alt from movie m join image i on m.img_id=i.id where m.id = $id")->fetch();
             $this->title = $movie->title;

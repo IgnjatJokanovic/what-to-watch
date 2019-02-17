@@ -16,9 +16,6 @@ if(isset($_GET['page']))
         case 'actors':
             require_once('views/actors.php');
             break;
-        case 'about':
-            require_once('views/about.php');
-            break;
         case 'author':
             require_once('views/author.php');
             break;

@@ -1,7 +1,7 @@
 <?php
-	include_once('models/Movie.php');
-	use models\Movie;
-	$movie = new Movie();
+	include_once('models/Actor.php');
+	use models\Actor;
+	$actor = new Actor();
 	
     ?>
 <section class="mt-100">
@@ -15,7 +15,7 @@
 					<?php
 
 					$offset = 6;
-					$number_of_results = count($movie->all());
+					$number_of_results = count($actor->allNameSurname());
 					$number_of_pages = ceil($number_of_results/$offset);
 					if (!isset($_GET['paginate'])) 
 					{
@@ -26,36 +26,15 @@
 						$paginate = $_GET['paginate'];
 					}
 					$limit = ($paginate-1)*$offset;
-					$movies = $movie->paginate($limit, $offset);
+					$actors = $actor->paginate($limit, $offset);
 					?>
-					<?php foreach($movies as $m): ?>
+					<?php foreach($actors as $a): ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="<?= $m->src ?>" alt="<?= $m->alt ?>" />
-											<h2><a href="index.php"><?= $m->title ?></a></h2>
-											<p><?= $m->story ?></p>
-												<div class="rating-system2">
-														<h3>Rate this movie</h3>
-														<input class="input" type="radio" value="1" name='rate2' id="star5_2" />
-														<label for="star5_2"></label>
-													
-														<input class="input" type="radio" value="2" name='rate2' id="star4_2" />
-														<label for="star4_2"></label>
-													
-														<input class="input" type="radio" value="3" name='rate2' id="star3_2" />
-														<label for="star3_2"></label>
-													
-														<input class="input" type="radio" value="4" name='rate2' id="star2_2" />
-														<label for="star2_2"></label>
-													
-														<input class="input" type="radio" value="5" name='rate2' id="star1_2" />
-														<label for="star1_2"></label>
-														
-														<div class="text"></div>
-													
-												  </div>
+											<img src="<?= $a->image ?>" alt="<?=  $a->alt ?>" />
+											<h2><a href="index.php?page=actor&id=<?= $a->id ?>"><?= $a->name.' '.$a->surname ?></a></h2>
 										
 										</div>
 								</div>
@@ -63,7 +42,7 @@
 							</div>
 						</div>
 						
-					<?php endforeach; ?>	
+				<?php endforeach; ?>	
 					</div><!--features_items-->
 					
 				</div>

@@ -5,7 +5,7 @@
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="logo pull-left">
-							<a href="index.html"><img class="logo-size" src="img/wtw_logo.png" alt="" /></a>
+							<a href="index.php"><img class="logo-size" src="img/wtw_logo.png" alt="wtw-logo" /></a>
 						</div>
 					</div>
 					<div class="col-sm-6 m-t-2">
@@ -22,13 +22,12 @@
 									<li><a href="index.php" class="active">Home</a></li>
 									<li class="dropdown"><a href="#">Categories<i class="fa fa-angle-down"></i></a>
 										<ul role="menu" class="sub-menu">
-											<?php foreach($category->presentCategories() as $c): ?>
+<?php foreach($category->presentCategories() as $c): ?>
 												<li><a href="index.php?page=category&id=<?= $c->id ?>"><?= strtoupper($c->name) ?></a></li>
-											<?php endforeach; ?>
+<?php endforeach; ?>
 										</ul>
 									</li>
 									<li><a href="index.php?page=actors">Actors</a></li>
-									<li><a href="index.php?page=about">About us</a></li>
 									<li><a href="index.php?page=author">Author</a></li>
 									<li><a href="index.php?page=contact">Contact</a></li>
 								</ul>
@@ -68,6 +67,7 @@
 											<li><a href="php/logout.php">Logout</a></li>
 											<?php endif; ?>
 										</ul>
+										
 									</li>
 								</ul>
 							</div>
