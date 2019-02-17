@@ -1,18 +1,20 @@
 <?php namespace models;
-    include_once('../models/DB.php');
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/imdb/models/DB.php');
   
     use models\DB;
     class Movie
     {
+        public $id;
         public $title;
         public $release;
         public $country;
         public $story;
         public $image;
+        public $rating;
         public $actors = array();
         public $categories = array();
         public $galery = array();
-
+        public $alt;
         public function save()
         {
             $con = DB::getInstance()->getConnection();
@@ -53,11 +55,57 @@
             }
         }
 
-        public function allNameSurname()
+        public function all()
         {
             $con = DB::getInstance()->getConnection();
-            return $con->query("select * from actor")->fetchAll();
+            return $con->query("select * from movie")->fetchAll();
         }
+
+        public function paginate($limit, $offset)
+        {
+            $con = DB::getInstance()->getConnection();
+            return $con->query("select m.id as id, m.title as title, m.storyline as story, i.src as src, i.alt as alt from movie m join image i on m.img_id=i.id limit $limit, $offset");
+        }
+
+        public function findById($id)
+        {
+            $con = DB::getInstance()->getConnection();
+            $this->actors = $con->query("select a.name, a.surname from actor a join movie_actor ma on a.id=ma.id_actor where ma.id_movie = $id")->fetchAll();
+            $this->categories = $con->query("select c.name from category c join movie_category mc on c.id=mc.id_category where id_movie = $id")->fetchAll();
+            $movie =  $con->query("select m.id as id, m.title as title, m.country as country, m.release_date as date, m.storyline as story, i.src as src, i.alt as alt from movie m join image i on m.img_id=i.id where m.id = $id")->fetch();
+            $this->title = $movie->title;
+            $this->release = $movie->date;
+            $this->story = $movie->story;
+            $this->image = $movie->src;
+            $this->alt = $movie->alt;
+            $this->country = $movie->country;
+            $this->id = $movie->id;
+            $this->galery = $con->query("select i.src, i.alt from image i join movie_galery mg on i.id=mg.id_img where mg.id_movie=$id")->fetchAll();
+            $this->rating = $con->query("select avg(grade) as avg from movie_rating where id_movie=$id")->fetch();
+        }
+        public function fresh()
+        {
+            $con = DB::getInstance()->getConnection();
+            return $con->query("select * from movie order by id desc limit 5");
+        }
+        public function incoming()
+        {
+            $con = DB::getInstance()->getConnection();
+            return $con->query("select m.title as title, m.storyline as storyline, m.id as id, i.src as src, i.alt as alt from movie m join image i on m.img_id=i.id order by release_date desc limit 3");
+        }
+        public function byCategory($id)
+        {
+            $con = DB::getInstance()->getConnection();
+            return $con->query("select m.id as id, m.title as title, m.storyline as story, i.src as src, i.alt as alt from movie m join image i on m.img_id=i.id join movie_category mc on m.id=mc.id_movie where mc.id_category = $id")->fetchAll();
+        }
+        public function paginateByCategory($limit, $offset, $id)
+        {
+            $con = DB::getInstance()->getConnection();
+            return $con->query("select m.id as id, m.title as title, m.storyline as story, i.src as src, i.alt as alt from movie m join image i on m.img_id=i.id join movie_category mc on m.id=mc.id_movie where mc.id_category = $id limit $limit, $offset")->fetchAll();
+        }
+
+
+
 
     }
 

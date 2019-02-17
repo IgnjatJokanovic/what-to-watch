@@ -1,6 +1,11 @@
 <?php
 session_start();
-
+include_once('models/Movie.php');
+include_once('models/Category.php');
+use models\Movie;
+use models\Category;
+$movie = new Movie();
+$category = new Category();
 include('views/header.php');
 include('views/nav.php');
 
@@ -28,6 +33,15 @@ if(isset($_GET['page']))
             break;
         case 'edit':
             require_once('views/edit.php');
+            break;
+        case 'actor':
+            require_once('views/single_actor.php');
+            break;
+        case 'movie':
+            require_once('views/single_movie.php');
+            break;
+        case 'category':
+            require_once('views/category.php');
             break;
         default:
             require_once('views/home.php');

@@ -22,11 +22,9 @@
 									<li><a href="index.php" class="active">Home</a></li>
 									<li class="dropdown"><a href="#">Categories<i class="fa fa-angle-down"></i></a>
 										<ul role="menu" class="sub-menu">
-											<li><a href="shop.html">Products</a></li>
-											<li><a href="product-details.html">Product Details</a></li> 
-											<li><a href="checkout.html">Checkout</a></li> 
-											<li><a href="cart.html">Cart</a></li> 
-											<li><a href="login.html">Login</a></li> 
+											<?php foreach($category->presentCategories() as $c): ?>
+												<li><a href="index.php?page=category&id=<?= $c->id ?>"><?= strtoupper($c->name) ?></a></li>
+											<?php endforeach; ?>
 										</ul>
 									</li>
 									<li><a href="index.php?page=actors">Actors</a></li>
