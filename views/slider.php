@@ -10,41 +10,21 @@
 						</ol>
 						
 						<div class="carousel-inner">
-							<div class="item active">
+						<?php $i = 0; ?>
+						<?php foreach($movie->incoming() as $new): ?>
+							<div class="item <?= $i==0?'active':'' ?>">
 								<div class="col-sm-6">
 									<h1>WTW</h1>
-									<h2>Naslov</h2>
-									<p>Opis</p>
-									<a href="#" class="btn btn-default get">Preview</a>
+									<h2><?= $new->title ?></h2>
+									<p><?= substr($new->storyline, 0, 20).'...' ?></p>
+									<a href="index.php?page=movie&id=<?= $new->id ?>" class="btn btn-default get">Preview</a>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/woody.jpg" class="girl img-responsive" alt="" />
+									<img src="<?= $new->src ?>" class="girl img-responsive" alt="<?= $new->alt ?>" />
 								</div>
 							</div>
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="images/home/girl2.jpg" class="girl img-responsive" alt="" />
-								</div>
-							</div>
-							
-							<div class="item">
-								<div class="col-sm-6">
-									<h2>Deadpool 2</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="img/DP.jpg" class="girl img-responsive" alt="" />
-									
-								</div>
-							</div>
-							
+							<?php $i++; ?>
+						<?php endforeach; ?>
 						</div>
 						
 						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">

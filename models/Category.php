@@ -1,6 +1,6 @@
 <?php
    namespace models; 
-   include_once('../models/DB.php');
+   require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/imdb/models/DB.php');
   
    use models\DB;
     class Category
@@ -27,6 +27,11 @@
        {
             $con = DB::getInstance()->getConnection();
             return $con->query("select * from category")->fetchAll();
+       }
+       public function presentCategories()
+       {
+            $con = DB::getInstance()->getConnection();
+            return $con->query("select distinct c.name as name, c.id as id  from category c join movie_category mc on c.id=mc.id_category")->fetchAll();
        }
     }
 

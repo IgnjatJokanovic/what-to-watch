@@ -1,8 +1,4 @@
-<?php
-	
-	
-	include('views/slider.php');
-    ?>
+
 <section class="mt-100">
 		<div class="container">
 			<div class="row">
@@ -12,9 +8,10 @@
     		<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 					<?php
+                    $id = $_GET['id'];
 
 					$offset = 6;
-					$number_of_results = count($movie->all());
+					$number_of_results = count($movie->byCategory($id));
 					$number_of_pages = ceil($number_of_results/$offset);
 					if (!isset($_GET['paginate'])) 
 					{
@@ -25,7 +22,7 @@
 						$paginate = $_GET['paginate'];
 					}
 					$limit = ($paginate-1)*$offset;
-					$movies = $movie->paginate($limit, $offset);
+					$movies = $movie->paginateByCategory($limit, $offset, $id);
 					?>
 					<?php foreach($movies as $m): ?>
 						<div class="col-sm-4">
@@ -52,7 +49,7 @@
 			<ul class="pagination pagination-lg">
 				<?php if($number_of_pages > 1): ?>
 					<?php for($i = 1; $i <= $number_of_pages; $i++): ?>
-					<li class="page-item"><a class="page-link" href="index.php?paginate=<?= $i ?>"><?= $i ?></a></li>
+					<li class="page-item"><a class="page-link" href="index.php?page=category&id=<?= $_GET['id'] ?>&paginate=<?= $i ?>"><?= $i ?></a></li>
 					<?php endfor; ?>
 				<?php endif; ?>
 			</ul>

@@ -7,11 +7,10 @@
 						<div class="single-widget">
 							<h2>Latest Movies</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Online Help</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Order Status</a></li>
-								<li><a href="#">Change Location</a></li>
-								<li><a href="#">FAQ’s</a></li>
+							<?php foreach($movie->fresh() as $f): ?>
+								<li><a href="index,php?page=movie&id=<?= $f->id ?>"><?= $f->title ?></a></li>
+							
+							<?php endforeach; ?>
 							</ul>
 						</div>
 					</div>
