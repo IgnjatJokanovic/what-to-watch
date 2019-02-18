@@ -46,7 +46,7 @@
 										<?php if($i%3 == 1): ?>
 											<div class="item <?= $i == 1?'active':'' ?>">
 										<?php endif; ?>
-												<a href="<?= $g->src ?>"><img src="<?= $g->src ?>" width="85" alt="<?= $g->alt ?>"></a>
+												<a href="<?= $g->src ?>" data-lightbox="roadtrip"><img src="<?= $g->src ?>" width="85" alt="<?= $g->alt ?>"></a>
 										<?php if($i%3 == 0): ?>
 											</div>
 										<?php endif; ?>
@@ -86,6 +86,10 @@
 								}
 
 								?>
+								</p>
+								<script>
+									const ID = <?= $movie->id ?>
+								</script>
 								
 								<p>Country: <?= $movie->country ?></p>
 								<p>Release date: <?= date("d M Y", $movie->release) ?></p>
@@ -101,25 +105,26 @@
 								<?php if(time() >= $movie->release): ?>
 								<div class="rating-system2">
 														<h3>Rate this movie</h3>
-														<input class="input" type="radio" value="1" name='rate2' id="star5_2" />
+														<input class="input rate-movie" type="radio" value="5" name='rate2' id="star5_2" />
 														<label for="star5_2"></label>
 													
-														<input class="input" type="radio" value="2" name='rate2' id="star4_2" />
+														<input class="input rate-movie" type="radio" value="4" name='rate2' id="star4_2" />
 														<label for="star4_2"></label>
 													
-														<input class="input" type="radio" value="3" name='rate2' id="star3_2" />
+														<input class="input rate-movie" type="radio" value="3" name='rate2' id="star3_2" />
 														<label for="star3_2"></label>
 													
-														<input class="input" type="radio" value="4" name='rate2' id="star2_2" />
+														<input class="input rate-movie" type="radio" value="2" name='rate2' id="star2_2" />
 														<label for="star2_2"></label>
 													
-														<input class="input" type="radio" value="5" name='rate2' id="star1_2" />
+														<input class="input rate-movie" type="radio" value="1" name='rate2' id="star1_2" />
 														<label for="star1_2"></label>
 														
 														<div class="text"></div>
 													
 									</div>
 							<?php endif; ?>
+							<p id="feedback_movie"></p>
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->

@@ -47,7 +47,7 @@
 										<?php if($i%3 == 1): ?>
 											<div class="item <?= $i == 1?'active':'' ?>">
 										<?php endif; ?>
-												<a href="<?= $g->src ?>"><img src="<?= $g->src ?>" width="85" alt="<?= $g->alt ?>"></a>
+												<a href="<?= $g->src ?>" data-lightbox="roadtrip"><img src="<?= $g->src ?>" width="85" alt="<?= $g->alt ?>"></a>
 										<?php if($i%3 == 0): ?>
 											</div>
 										<?php endif; ?>
@@ -88,26 +88,30 @@
 
 								?>
 								<p>Bio:</br><?= wordwrap($actor->description,30,"<br>\n", true) ?></p>
+								<script>
+									const ID = <?= $actor->id ?>
+								</script>
 								<div class="rating-system2">
 														<h3>Rate this actor</h3>
-														<input class="input" type="radio" value="1" name='rate2' id="star5_2" />
+														<input class="input rate-actor" type="radio" value="5" name='rate2' id="star5_2" />
 														<label for="star5_2"></label>
 													
-														<input class="input" type="radio" value="2" name='rate2' id="star4_2" />
+														<input class="input rate-actor" type="radio" value="4" name='rate2' id="star4_2" />
 														<label for="star4_2"></label>
 													
-														<input class="input" type="radio" value="3" name='rate2' id="star3_2" />
+														<input class="input rate-actor" type="radio" value="3" name='rate2' id="star3_2" />
 														<label for="star3_2"></label>
 													
-														<input class="input" type="radio" value="4" name='rate2' id="star2_2" />
+														<input class="input rate-actor" type="radio" value="2" name='rate2' id="star2_2" />
 														<label for="star2_2"></label>
 													
-														<input class="input" type="radio" value="5" name='rate2' id="star1_2" />
+														<input class="input rate-actor" type="radio" value="1" name='rate2' id="star1_2" />
 														<label for="star1_2"></label>
 														
 														<div class="text"></div>
 													
 									</div>
+									<p id="feedback_actor"></p>
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->
