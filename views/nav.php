@@ -27,7 +27,7 @@
 <?php endforeach; ?>
 										</ul>
 									</li>
-									<li><a href="index.php?page=actors">Actors</a></li>
+									<li><a href='index.php?page=actors'>Actors</a></li>
 									<li><a href="index.php?page=author">Author</a></li>
 									<li><a href="index.php?page=contact">Contact</a></li>
 								</ul>

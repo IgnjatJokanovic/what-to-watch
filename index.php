@@ -2,6 +2,8 @@
 session_start();
 include_once('models/Movie.php');
 include_once('models/Category.php');
+include_once('models/User.php');
+use models\User;
 use models\Movie;
 use models\Category;
 $movie = new Movie();
@@ -39,6 +41,9 @@ if(isset($_GET['page']))
             break;
         case 'category':
             require_once('views/category.php');
+            break;
+        case 'activation':
+            require_once('views/activation.php');
             break;
         default:
             require_once('views/home.php');
