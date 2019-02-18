@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -68,7 +67,7 @@
                             <a href="#">Movies<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin.php?page=galUD">Update / Delete</a>
+                                    <a href="index.php?page=movieC">Update / Delete</a>
                                 </li>
                                 <li>
                                     <a href="index.php?page=insertM">Insert</a>
@@ -96,7 +95,7 @@
                             <a href="#">Category<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin.php?page=newUD">Update / Delete</a>
+                                    <a href="index.php?page=categoryC">Update / Delete</a>
                                 </li>
                                 <li>
                                     <a href="index.php?page=insertC">Insert</a>
@@ -105,35 +104,10 @@
                             </ul>
                     
                         </li>
-                        <li>
-                            <a href="#">Shop Item<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="admin.php?page=shopUD">Update / Delete</a>
-                                </li>
-                                <li>
-                                    <a href="admin.php?page=shopI">Insert</a>
-                                </li>
-                                
-                            </ul>
-                    
-                        </li>
-                       
-                        <li>
-                            <a href="#">Slider<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="admin.php?page=sliderUD">Update / Delete</a>
-                                </li>
-                                <li>
-                                    <a href="admin.php?page=sliderI">Insert</a>
-                                </li>
-                                
-                            </ul>
-                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
         </nav>
+    </div>

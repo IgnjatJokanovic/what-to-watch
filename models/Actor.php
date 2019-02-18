@@ -12,6 +12,7 @@
         public $image;
         public $alt;
         public $rating;
+        public $img_id;
         public $galery = array();
 
         public function save()
@@ -60,14 +61,56 @@
         public function findById($id)
         {
             $con = DB::getInstance()->getConnection();
-            $actor = $con->query("select a.id as id, a.name as name, a.surname as surname, a.description as description, i.src as image, i.alt as alt from actor a join image i on a.img_id=i.id where a.id=$id")->fetch();
+            $actor = $con->query("select a.id as id, a.name as name, a.surname as surname, a.description as description, i.id as id, i.src as image, i.alt as alt from actor a join image i on a.img_id=i.id where a.id=$id")->fetch();
             $this->id = $actor->id;
             $this->name = $actor->name;
             $this->surname = $actor->surname;
             $this->description =  $actor->description;
             $this->image = $actor->image;
-            $this->galery = $con->query("select i.src, i.alt from image i join actor_galery ag on i.id=ag.id_img where ag.id_actor=$id")->fetchAll();
+            $this->img_id = $actor->id;
+            $this->galery = $con->query("select i.id, i.src, i.alt from image i join actor_galery ag on i.id=ag.id_img where ag.id_actor=$id")->fetchAll();
             $this->rating = $con->query("select avg(rating) as avg from actor_rating where id_actor=$id")->fetch();
+        }
+
+        public function destroy($id)
+        {
+            $con = DB::getInstance()->getConnection();
+            $con->query("delete from actor where id=$id");
+            $con->query("delete from comment_actor where id_actor=$id");
+            $con->query("delete from actor_rating where id_actor=$id");
+            $ids = $con->query("select id_img from actor_galery where id_actor=$id");
+            $con->query("delete from actor_galery where id_actor=$id");
+            foreach($ids as $id)
+            {
+                $con->query("delete from image where id=$id");
+            }
+
+        }
+        
+        public function updateInfo($id, $ids)
+        {
+            $con = DB::getInstance()->getConnection();
+            $stm = $con->prepare("update actor set name=:name, surname=:surname, description=:description where id=$id");
+            $stm->bindParam(":name", $this->name);
+            $stm->bindParam(":surname", $this->surname);
+            $stm->bindParam(":description", $this->description);
+            $stm->execute();
+            $alt = $this->name.' '.$this->surname;
+            foreach($ids as $id)
+            {
+               
+                $stm = $con->prepare("update image set alt=:alt where id=$id");
+                $stm->bindParam(":alt", $alt);
+                $stm->execute();
+            }
+        }
+        public function updateImages($id, $src)
+        {
+            $con = DB::getInstance()->getConnection();
+            $stm = $con->prepare("update image set src=:src where id=$id");
+            $stm->bindParam(":src", $src);
+            $stm->execute();
+
         }
 
 

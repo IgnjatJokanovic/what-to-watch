@@ -27,6 +27,21 @@ include 'header.php';
       case 'actorC':
         include 'views/actor_combo.php';
         break;
+      case 'movieC':
+        include 'views/movie_combo.php';
+        break;
+      case 'actorE':
+        include 'views/actor_edit.php';
+        break;
+      case 'movieE':
+        include 'views/movie_edit.php';
+        break;
+      case 'categoryC':
+        include 'views/category_combo.php';
+        break;
+      // case 'categoryC':
+      //   include 'views/category_combo.php';
+      //   break;
 
 //     case "userS":
 //       include "../admin/userStatistics.php";
