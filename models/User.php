@@ -41,7 +41,8 @@
                     $smt1->bindParam(":email", $this->email);
                     $smt1->bindParam(":pass", $pass);
                     $smt1->execute();
-                    mail($this->email, 'Account activation link', 'Please click <a href='."#?page=activation&ac_key=$ac_key".'>HERE</a> to activate your account.');
+                    $content = "Please click <a href='https://wtw-movies.000webhostapp.com/?page=activation&ac_key=$ac_key'>HERE</a> to activate your account";
+                    mail($this->email, 'Account activation link', $content);
                     return true;
 
                 }
@@ -171,7 +172,7 @@
                 if(!$user->active)
                 {
                     $con = DB::getInstance()->getConnection();
-                    $con->query("update user set active=true where id='$user->id'");
+                    $con->query("update user set active=true where ac_key='$hash'");
                 }
                 else
                 {
@@ -188,7 +189,7 @@
         {
             $con = DB::getInstance()->getConnection();
             return $con->query("select u.id as id, u.name as name, u.surname as surname, u.username as uname, u.email as email, u.active as active, i.id as amg_id, i.src as src, i.alt as alt, r.name as role from user u join image i 
-            on u.img_id=i.id join role r on u.role_id=r.id where u.$row=$value")->fetch();
+            on u.img_id=i.id join role r on u.role_id=r.id where u.$row='$value'")->fetch();
         }
         public function login($uname, $pass)
         {
