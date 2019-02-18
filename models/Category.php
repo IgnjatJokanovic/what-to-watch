@@ -33,6 +33,20 @@
             $con = DB::getInstance()->getConnection();
             return $con->query("select distinct c.name as name, c.id as id  from category c join movie_category mc on c.id=mc.id_category")->fetchAll();
        }
+       public function destroy($id)
+       {
+            $con = DB::getInstance()->getConnection();
+            $con->query("delete from category where id=$id");
+            $con->query("delete from movie_category where id_category = $id");
+
+       }
+       public function update($id)
+       {
+            $con = DB::getInstance()->getConnection();
+            $stm = $con->prepare("update category set name=:name where id=$id");
+            $stm->bindParam(":name", $this->name);
+            $stm->execute();
+       }
     }
 
 

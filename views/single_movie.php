@@ -157,7 +157,7 @@
 										}
 										if(isset($_SESSION['user']) && $body == '')
 										{
-											array_push($err, "<p class='text-danger'>You must write somethin in your comment</p>");
+											array_push($err, "<p class='text-danger text-center'>You must write somethin in your comment</p>");
 										}
 										if(isset($_SESSION['user']) && $body != '' && !preg_match($validator, $body))
 										{
