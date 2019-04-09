@@ -92,7 +92,7 @@ Insert
             array_push($err, "<p class='text-danger'>Main image is required</p>");
         }
         if($description == '')
-        {
+    {
             array_push($err, "<p class='text-danger'>Description field is required</p>");
         }
         for($i = 1; $i <= 6; $i++)
@@ -117,13 +117,13 @@ Insert
             $actor->surname = ucfirst($surname);
             $actor->description = $description;
             $main_img = time().$image['name'];
-            if(move_uploaded_file($image['tmp_name'], "C:/xampp/htdocs/imdb/img/$main_img")){
+            if(move_uploaded_file($image['tmp_name'], "img/$main_img")){
                 $actor->image = "img/$main_img";
             }
             for($i = 1; $i <=6; $i++)
             {
                 $galery = time().${'galery' . $i}['name'];
-                if(move_uploaded_file(${'galery' . $i}['tmp_name'], "C:/xampp/htdocs/imdb/img/$galery"))
+                if(move_uploaded_file(${'galery' . $i}['tmp_name'], "img/$galery"))
                 {
                     array_push($actor->galery, "img/$galery");
                 }

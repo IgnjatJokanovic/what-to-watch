@@ -35,13 +35,9 @@
 						</div>
 					<div class="col-sm-2">
 							<div class="search_box pull-right dropdown">
-								<input  class="srch" type="search" placeholder="Search"/>
-								<ul class="sub-menu dropdown-content">
-									<li><a href="shop.html">Item1</a></li>
-									<li><a href="product-details.html">Item2</a></li> 
-									<li><a href="checkout.html">Item3</a></li> 
-									<li><a href="cart.html">Item4</a></li> 
-									<li><a href="login.html">Itme5</a></li> 
+								<input  class="srch" type="search" id="srcbox" placeholder="Search"/>
+								<ul class="sub-menu dropdown-content" id="src_result">
+									
 								</ul>
 							</div>
 					</div>

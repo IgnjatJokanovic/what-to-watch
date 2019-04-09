@@ -68,7 +68,7 @@
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<h2><?= $movie->title ?></h2>
-								<p>Rating: 
+								<p><strong>Rating:</strong> 
 								<?php 
 								if($movie->rating->avg == null)
 								{
@@ -91,17 +91,17 @@
 									const ID = <?= $movie->id ?>
 								</script>
 								
-								<p>Country: <?= $movie->country ?></p>
-								<p>Release date: <?= date("d M Y", $movie->release) ?></p>
-								<p>Actors: </p>
+								<p><strong>Country: </strong><?= $movie->country ?></p>
+								<p><strong>Release date: </strong><?= date("d M Y", $movie->release) ?></p>
+								<p><strong>Actors: </strong></p>
 								<?php foreach($movie->actors as $a): ?>
 									<a href="index.php?page=actor&id=<?= $a->id ?>"><?= $a->name.' '.$a->surname ?></a></br>
 								<?php endforeach; ?>
-								<p>Categories: </p>
+								<p><strong>Categories: </strong></p>
 								<?php foreach($movie->categories as $c): ?>
-									#<?= strtoupper($c->name) ?></br>
+									<div class='badge badge-light'><?= strtoupper($c->name) ?></div>
 								<?php endforeach; ?>
-								<p>Storyline:</br><?= wordwrap($movie->story,30,"<br>\n", true) ?></p>
+								<p><strong>Storyline:</strong></br><?= wordwrap($movie->story,30,"<br>\n", true) ?></p>
 								<?php if(time() >= $movie->release): ?>
 								<div class="rating-system2">
 														<h3>Rate this movie</h3>

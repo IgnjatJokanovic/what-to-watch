@@ -69,7 +69,7 @@
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<h2><?= $actor->name.' '.$actor->surname ?></h2>
-								<p>Rating: 
+								<p><strong>Rating:</strong> 
 								<?php 
 								if($actor->rating->avg == null)
 								{
@@ -87,7 +87,7 @@
 								}
 
 								?>
-								<p>Bio:</br><?= wordwrap($actor->description,30,"<br>\n", true) ?></p>
+								<p><strong>Bio:</strong></br><?= wordwrap($actor->description,30,"<br>\n", true) ?></p>
 								<script>
 									const ID = <?= $actor->id ?>
 								</script>

@@ -1,5 +1,5 @@
 <?php namespace models;
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/imdb/models/DB.php');
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/imdb/models/DB.php');
   
     use models\DB;
     class Movie
@@ -54,6 +54,11 @@
             foreach($id_s as $id)
             {
                 $con->query("insert into movie_galery values('', $movie_id, $id)");
+            }
+            $subscribers = $con->query('select * from subscription')->fetchAll();
+            foreach($subscribers as $s)
+            {
+                mail($s->email, 'A new movie has been added on our website', "<p>Click <a href='https://wtw-movies.000webhostapp.com'>Here</a> to see the new movie</p>");
             }
         }
 

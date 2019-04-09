@@ -28,7 +28,7 @@ use models\User;
                                 {
                                     $user = new User();
                                     $img = time().$pic['name'];
-                                    if(move_uploaded_file($pic['tmp_name'], "C:/xampp/htdocs/imdb/img/$img"))
+                                    if(move_uploaded_file($pic['tmp_name'], "img/$img"))
                                     {
                                         $user->image = "img/$img";
                                         $user->updatePic($img_id);

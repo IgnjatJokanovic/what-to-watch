@@ -16,7 +16,7 @@
 								<div class="col-sm-6">
 									<h1>WTW</h1>
 									<h2><?= $new->title ?></h2>
-									<p><?= substr($new->storyline, 0, 20).'...' ?></p>
+									<p><?= $new->storyline ?></p>
 									<a href="index.php?page=movie&id=<?= $new->id ?>" class="btn btn-default get">Preview</a>
 								</div>
 								<div class="col-sm-6">

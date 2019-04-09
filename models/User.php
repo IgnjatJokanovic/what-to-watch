@@ -1,6 +1,6 @@
 <?php 
     namespace models;
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/imdb/models/DB.php');
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/imdb/models/DB.php');
   
     use models\DB;
     class User
@@ -20,7 +20,7 @@
             {
                 $pic = time().$this->image['name'];
 
-                if(move_uploaded_file($this->image['tmp_name'], "C:/xampp/htdocs/imdb/img/$pic"))
+                if(move_uploaded_file($this->image['tmp_name'], "img/$pic"))
                 {
                     $this->image ="img/$pic";
                     $con = DB::getInstance()->getConnection();
