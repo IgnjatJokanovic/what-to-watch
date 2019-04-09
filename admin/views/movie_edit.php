@@ -101,7 +101,7 @@ foreach($movie->categories as $c)
         if(empty($err))
         {
             $main_img = time().$image['name'];
-            if(move_uploaded_file($image['tmp_name'], "C:/xampp/htdocs/imdb/img/$main_img")){
+            if(move_uploaded_file($image['tmp_name'], "img/$main_img")){
                 $img = "img/$main_img";
                 $movie->updateImages($id_main, $img);
                 echo "<p class='text-success'>Updated Main image, due to anomaly you have to refresh page manualy</p>";
@@ -139,7 +139,7 @@ foreach($movie->categories as $c)
         if(empty($err))
         {
             $main_img = time().$galery['name'];
-            if(move_uploaded_file($galery['tmp_name'], "C:/xampp/htdocs/imdb/img/$main_img")){
+            if(move_uploaded_file($galery['tmp_name'], "img/$main_img")){
                 $img = "img/$main_img";
                 $movie->updateImages($id_galery, $img);
                 echo "<p class='text-success'>Updated Galery image, due to anomaly you have to refresh page manualy</p>";

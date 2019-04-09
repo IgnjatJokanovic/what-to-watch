@@ -1,6 +1,6 @@
 <?php 
     namespace models;
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/imdb/models/DB.php');
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/imdb/models/DB.php');
   
     use models\DB;
     class Actor
@@ -43,6 +43,10 @@
             foreach($id_s as $id)
             {
                 $con->query("insert into actor_galery values('', $ac_id, $id)");
+            }
+            foreach($subscribers as $s)
+            {
+                mail($s->email, 'A new actor has been added on our website', "<p>Click <a href='https://wtw-movies.000webhostapp.com'>Here</a> to see the new actor</p>");
             }
         }
 

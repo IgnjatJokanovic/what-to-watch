@@ -6,6 +6,7 @@
     use models\Actor;
     use models\Movie;
     
+    
 
 
                                 
@@ -90,7 +91,7 @@
                                             $movie->actors = $actors;
                                             $movie->categories = $categories;
                                             $main_img = time().$image['name'];
-                                            if(move_uploaded_file($image['tmp_name'], "C:/xampp/htdocs/imdb/img/$main_img"))
+                                            if(move_uploaded_file($image['tmp_name'], "../../img/$main_img"))
                                             {
                                                 $movie->image = "img/$main_img";
 
@@ -98,13 +99,14 @@
                                             for($i = 1; $i <=6; $i++)
                                             {
                                                 $galery = time().${'galery' . $i}['name'];
-                                                if(move_uploaded_file(${'galery' . $i}['tmp_name'], "C:/xampp/htdocs/imdb/img/$galery"))
+                                                if(move_uploaded_file(${'galery' . $i}['tmp_name'], "../../img/$galery"))
                                                 {
                                                     array_push($movie->galery, "img/$galery");
                                                 }
                                 
                                             }
                                             $movie->save();
+                                            
 
 
                                         }

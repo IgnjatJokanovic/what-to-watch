@@ -1,6 +1,6 @@
 <?php 
     namespace models;
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/imdb/models/DB.php');
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/imdb/models/DB.php');
   
     use models\DB;
     class ComentMovie
