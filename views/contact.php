@@ -9,10 +9,8 @@
 	    		<div class="col-sm-8">
 	    			<div class="contact-form mt-200">
 	    				<div class="status alert alert-success" style="display: none"></div>
-				    	<form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
-				            <div class="form-group col-md-12">
-				                <input type="text" name="subject" class="form-control" required="required" placeholder="Subject">
-				            </div>
+						<?php include "views/feedback.php"; ?>
+				    	<form id="main-contact-form" action="php/contact.php" class="contact-form row" name="contact-form" method="post">
 				            <div class="form-group col-md-12">
 				                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your Message Here"></textarea>
 				            </div>                        

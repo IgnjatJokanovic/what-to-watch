@@ -20,7 +20,7 @@
             {
                 $pic = time().$this->image['name'];
 
-                if(move_uploaded_file($this->image['tmp_name'], "img/$pic"))
+                if(move_uploaded_file($this->image['tmp_name'], "C:/xampp/htdocs/imdb/img/$pic"))
                 {
                     $this->image ="img/$pic";
                     $con = DB::getInstance()->getConnection();

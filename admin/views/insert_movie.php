@@ -1,4 +1,4 @@
-<?php 
+<?php   
     include_once('../models/Category.php');
     include_once('../models/Actor.php');
     include_once('../models/Movie.php');
@@ -17,112 +17,13 @@
 
     <div class="row">
                     <div class="col-lg-12">
+                    <?php include "../views/feedback.php"; ?>
                         <div class="panel panel-default">
                         
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                            <?php
-                                    if(isset($_POST['insert']))
-                                    {
-                                        extract($_POST);
-                                        extract($_FILES);
-                                        $err = array();
-                                        $mimes = array("image/jpg", "image/jpeg", "image/png");
-                                        if($title == '')
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Title field is required</p>");
-                                        }
-                                        if($story == '')
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Storyline field is required</p>");
-                                        }
-                                        if($image['size'] == 0)
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Image is required</p>");
-                                        }
-                                        if(!in_array($image['type'], $mimes))
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Image must be of image format</p>");
-                                        }
-                                        if($d == 0)
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Select day</p>");
-                                        }
-                                        if($m == 0)
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Select month</p>");
-                                        }
-                                        if($y == 0)
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Select year</p>");
-                                        }
-                                        if($country == "0")
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Select Country</p>");
-                                        }
-                                        if(!isset($categories))
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Select atleast one category</p>");
-                                        }
-                                        if(!isset($actors))
-                                        {
-                                            array_push($err, "<p class='bg-danger text-white text-center'>Select atleast one actor</p>");
-                                        }
-                                        for($i = 1; $i <= 6; $i++)
-                                        {
-                                            if(${'galery' . $i}['size'] == 0)
-                                            {
-                                                array_push($err, "<p class='text-danger'>Galerry image($i) is required</p>");
-                                
-                                            }
-                                            if(!in_array(${'galery' . $i}['type'], $mimes)){
-                                                $erors[] = '<p class="text-danger">Galerry image($i) must be an image format</p>';
-                                            }
-                                
-                                        }
-
-                                        if(empty($err))
-                                        {
-                                            $movie = new Movie();
-                                            $movie->title = $title;
-                                            $movie->release = mktime(0,0,0,$m,$d,$y);
-                                            $movie->country = $country;
-                                            $movie->story = $story;
-                                            $movie->actors = $actors;
-                                            $movie->categories = $categories;
-                                            $main_img = time().$image['name'];
-                                            if(move_uploaded_file($image['tmp_name'], "../../img/$main_img"))
-                                            {
-                                                $movie->image = "img/$main_img";
-
-                                            }
-                                            for($i = 1; $i <=6; $i++)
-                                            {
-                                                $galery = time().${'galery' . $i}['name'];
-                                                if(move_uploaded_file(${'galery' . $i}['tmp_name'], "../../img/$galery"))
-                                                {
-                                                    array_push($movie->galery, "img/$galery");
-                                                }
-                                
-                                            }
-                                            $movie->save();
-                                            
-
-
-                                        }
-                                        else
-                                        {
-                                            foreach($err as $e)
-                                            {
-                                                echo $e;
-                                            }
-                                        }
-                                        
-                                    }
-
-
-                                ?>
-                                <form action="index.php?page=insertM" method="POST" enctype="multipart/form-data">
+                            
+                                <form action="../php/movie_insert.php" method="POST" enctype="multipart/form-data">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     
                                         <tbody>
