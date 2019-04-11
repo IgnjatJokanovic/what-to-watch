@@ -51,7 +51,7 @@
 			<ul class="pagination pagination-lg">
 				<?php if($number_of_pages > 1): ?>
 					<?php for($i = 1; $i <= $number_of_pages; $i++): ?>
-					<li class="page-item"><a class="page-link" href="index.php?paginate=<?= $i ?>"><?= $i ?></a></li>
+					<li class="page-item"><a class="page-link" href="index.php?page=actors&paginate=<?= $i ?>"><?= $i ?></a></li>
 					<?php endfor; ?>
 				<?php endif; ?>
 			</ul>

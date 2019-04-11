@@ -55,7 +55,7 @@
             {
                 $con->query("insert into movie_galery values('', $movie_id, $id)");
             }
-            $subscribers = $con->query('select * from subscription')->fetchAll();
+            $subscribers = $con->query('select * from subscribtion')->fetchAll();
             foreach($subscribers as $s)
             {
                 mail($s->email, 'A new movie has been added on our website', "<p>Click <a href='https://wtw-movies.000webhostapp.com'>Here</a> to see the new movie</p>");

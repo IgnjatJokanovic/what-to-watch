@@ -130,55 +130,14 @@
 									<p><?= $c->comment ?></p>
 								<?php endforeach; ?>
 									<p><b>Write Your Comment</b></p>
-									<form action="<?= $_SERVER['PHP_SELF'] ?>?page=actor&id=<?= $id ?>" method="post">
+									<form action="php/actor_comment.php" method="post">
 										<textarea name="body" ></textarea>
-										
+										<input type="hidden" name="id" value="<?= $actor->id ?>">
 										<button type="submit" name="comment" class="btn btn-default pull-right">
 											Submit
 										</button>
 									</form>
-									<?php
-									if(isset($_POST['comment']))
-									{
-										$err = array();
-										extract($_POST);
-										$validator = "/^[A-Za-z0-9\s]+$/";
-										if(!isset($_SESSION['user']))
-										{
-											array_push($err, "<p class='text-danger'>You must be logged in to comment</p>");
-										}
-										if(isset($_SESSION['user']) && $body == '')
-										{
-											array_push($err, "<p class='text-danger'>You must write somethin in your comment</p>");
-										}
-										if(isset($_SESSION['user']) && $body != '' && !preg_match($validator, $body))
-										{
-											array_push($err, "<p class='text-danger'>You can write only numbers and letters in comment</p>");
-										}
-										if(empty($err))
-										{
-											
-											$instance->comment = $body;
-											$instance->created_at = time();
-											$instance->id_user = $_SESSION['user']->id;
-											$instance->id_actor = $id;
-											$instance->save();
-											header("Refresh:0");
-											ob_end_flush(); 
-
-										}
-										else{
-											foreach($err as $e)
-											{
-												echo $e;
-											}
-										}
-
-									}
-
-
-
-									?>
+									<?php include "views/feedback.php"; ?>
 								</div>
 							</div>
 							
